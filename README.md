@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Create a Chuck Norris Joke Application
 
-## Available Scripts
+We as developers like Chuck Norris jokes. Therefor we created the following assignment to test your
+Frontend skills/ knowledge.
 
-In the project directory, you can run:
+Please create a git repo (can be local) before you start this assignment. When adding a commit please give
+a proper description to explain your choices.
 
-### `yarn start`
+It only has to run in chrome (so you can use es6). Please don't use any boilerplates. You can/may use any
+framework/lib you want.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When finished send a link or send your folder(zip with .git folder).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Assignment
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We want an Application where we can fetch 10 Random Chuck Norris jokes. These jokes can be fetched
+from the following API [http://api.icndb.com/jokes/random/10](http://api.icndb.com/jokes/random/10).
 
-### `yarn build`
+When these jokes are fetched via a button they need to be displayed in a list. In this list we can mark
+certain jokes as favourite. The favourite jokes will appear in a favourites list with a max of 10 unique items.
+There should be an option to remove jokes from the favourite list as well.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On refresh the favourites lists should be stored so next time when i visit the app my favourites should be
+present.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+We can also turn a timer on/off via a button (every 5 seconds). This will add one random joke to the
+favourites list [http://api.icndb.com/jokes/random/1](http://api.icndb.com/jokes/random/1) until the list has 10 items.
