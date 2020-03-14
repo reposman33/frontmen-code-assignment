@@ -8,4 +8,10 @@
 	border-radius: 5px;
 	background-color: darkslategrey;
 	color: white;
+
+	&.selected {
+		background-color: azure;
+		color: darkblue;
+		border: 1px solid red;
+	}
 }

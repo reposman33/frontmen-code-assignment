@@ -1,6 +1,7 @@
 import React from "react";
 import { API } from "../services/API";
 import { Joke } from "./joke";
+import "./jokes.scss";
 
 export class Jokes extends React.Component {
 	constructor(props) {
@@ -17,9 +18,12 @@ export class Jokes extends React.Component {
 
 	componentDidMount() {}
 
-	onHandleCardClick(e) {
-		console.log("e: ", e.target.class);
-	}
+	onSetFavorite = jokeId => {
+		const favorites = this.state.favoriteJokes.includes(jokeId)
+			? this.state.favoriteJokes
+			: [...this.state.favoriteJokes, jokeId];
+		this.setState({ favoriteJokes: favorites });
+	};
 
 	onGetJokes = () => {
 		this.getJokes();
@@ -38,9 +42,14 @@ export class Jokes extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='container'>
 				{this.state.jokes.map(joke => (
-					<Joke id={joke.id} key={joke.id} joke={joke.joke} onClick={this.onHandleCardClick}></Joke>
+					<Joke
+						id={joke.id}
+						key={joke.id}
+						joke={joke.joke}
+						favorite={this.state.favoriteJokes.includes(joke.id)}
+						onClick={this.onSetFavorite}></Joke>
 				))}
 				<button onClick={this.onGetJokes}>More Jokes!</button>
 				<button onClick={this.onSave}>Save</button>
