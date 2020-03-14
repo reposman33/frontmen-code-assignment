@@ -3,15 +3,33 @@ import { API } from "../services/API";
 import { Joke } from "./joke";
 
 export class Jokes extends React.Component {
-	initialState = { jokes: [] };
-
 	constructor(props) {
 		super(props);
+		const savedJokes = localStorage.getItem("jokes");
+		const savedFavoriteJokes = localStorage.getItem("favoriteJokes");
+		this.initialState = {
+			jokes: savedJokes ? JSON.parse(savedJokes) : [],
+			favoriteJokes: savedFavoriteJokes ? JSON.parse(savedFavoriteJokes) : []
+		};
 		this.state = this.initialState;
-		this.jokes = [];
 		this.api = new API();
-		this.getJokes();
 	}
+
+	componentDidMount() {}
+
+	onHandleCardClick(e) {
+		console.log("e: ", e.target.class);
+	}
+
+	onGetJokes = () => {
+		this.getJokes();
+	};
+
+	onSave = () => {
+		this.state.jokes.length && localStorage.setItem("jokes", JSON.stringify(this.state.jokes));
+		this.state.favoriteJokes.length &&
+			localStorage.setItem("favoriteJokes", JSON.stringify(this.state.favoritejokes));
+	};
 
 	async getJokes() {
 		const jokes = await this.api.getRandomJokes(20);
@@ -19,6 +37,14 @@ export class Jokes extends React.Component {
 	}
 
 	render() {
-		return this.state.jokes.map(joke => <Joke id={joke.id} joke={joke.joke}></Joke>);
+		return (
+			<div>
+				{this.state.jokes.map(joke => (
+					<Joke id={joke.id} key={joke.id} joke={joke.joke} onClick={this.onHandleCardClick}></Joke>
+				))}
+				<button onClick={this.onGetJokes}>More Jokes!</button>
+				<button onClick={this.onSave}>Save</button>
+			</div>
+		);
 	}
 }
