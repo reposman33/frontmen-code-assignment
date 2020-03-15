@@ -33,17 +33,17 @@ export class Jokes extends React.Component {
 		const randomJokes = [];
 		const jokes = this.state.jokes.slice();
 		for (let i = 0; i < 10; i++) {
-			let randomIndex = Math.random() * (jokes.length - 1);
+			let randomIndex = Math.floor(Math.random() * (jokes.length - 1));
 			randomJokes.push(jokes[randomIndex].id);
 			jokes.splice(randomIndex, 1);
 		}
 		// update the state every 5 secs with a favorite joke
 		const id = setInterval(() => {
 			this.setState({
-				favoriteJokes: [this.state.favoriteJokes, randomJokes[0]]
+				favoriteJokes: [...this.state.favoriteJokes, randomJokes[0]]
 			});
 			randomJokes.splice(0, 1);
-			if (id === 0) {
+			if (randomJokes.length === 0) {
 				clearInterval(id);
 			}
 		}, 5000);
@@ -57,7 +57,7 @@ export class Jokes extends React.Component {
 	onSave = () => {
 		this.state.jokes.length && localStorage.setItem("jokes", JSON.stringify(this.state.jokes));
 		this.state.favoriteJokes.length &&
-			localStorage.setItem("favoriteJokes", JSON.stringify(this.state.favoritejokes));
+			localStorage.setItem("favoriteJokes", JSON.stringify(this.state.favoriteJokes));
 	};
 
 	async getJokes() {
