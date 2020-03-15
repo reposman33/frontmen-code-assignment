@@ -3,14 +3,14 @@ import "./joke.scss";
 import * as he from "he";
 
 class Joke extends React.Component {
-	onSetFavorite = () => {
+	onSetfavourite = () => {
 		this.props.onClick(this.props.id);
 	};
 
 	render() {
-		this.classNames = this.props.favorite ? "card selected" : "card";
+		this.classNames = this.props.favourite ? "card selected" : "card";
 		return (
-			<div className={this.classNames} data-id={this.props.id} onClick={this.onSetFavorite}>
+			<div className={this.classNames} data-id={this.props.id} onClick={this.onSetfavourite}>
 				{he.unescape(this.props.joke)}
 			</div>
 		);
