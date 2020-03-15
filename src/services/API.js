@@ -1,5 +1,5 @@
 export class API {
-	URL = "http://api.icndb.com/jokes/";
+	URL = "https://api.icndb.com/jokes/";
 
 	getAllJokes = async () => {
 		return await fetch(this.URL)
