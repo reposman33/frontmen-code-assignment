@@ -6,15 +6,23 @@ import "./jokes.scss";
 export class Jokes extends React.Component {
 	constructor(props) {
 		super(props);
+		// retrieve jokes from localStorage
 		const savedJokes = localStorage.getItem("jokes");
+		// retrieve favouriteJokes from localStorage
 		const savedfavouriteJokes = localStorage.getItem("favouriteJokes");
+		// initilize initial state
 		this.initialState = {
 			jokes: savedJokes ? JSON.parse(savedJokes) : [],
 			favouriteJokes: savedfavouriteJokes ? JSON.parse(savedfavouriteJokes) : [],
 			feedback: ""
 		};
 		this.state = this.initialState;
+
 		this.api = new API();
+		// retrieve jokes from API if none present
+		if (this.state.jokes.length === 0) {
+			this.getJokes();
+		}
 	}
 
 	componentDidMount() {}
@@ -65,11 +73,7 @@ export class Jokes extends React.Component {
 				this.setState({ feedback: "" });
 				clearInterval(id);
 			}
-		}, 500);
-	};
-
-	onGetJokes = () => {
-		this.getJokes();
+		}, 5000);
 	};
 
 	onSave = () => {
@@ -80,10 +84,10 @@ export class Jokes extends React.Component {
 			localStorage.setItem("favouriteJokes", JSON.stringify(this.state.favouriteJokes));
 	};
 
-	async getJokes() {
+	getJokes = async () => {
 		const jokes = await this.api.getRandomJokes(20);
 		this.setState({ jokes: jokes.map(joke => ({ id: joke.id, joke: joke.joke })), favouriteJokes: [] });
-	}
+	};
 
 	render() {
 		return (
@@ -103,7 +107,7 @@ export class Jokes extends React.Component {
 				</div>
 				<div className='footer'>
 					<h3>{this.state.feedback.length ? this.state.feedback : null}</h3>
-					<button onClick={this.onGetJokes}>{this.state.jokes.length ? "Update" : "Show"} jokes</button>
+					<button onClick={this.getJokes}>Update jokes</button>
 					<button onClick={this.onSave}>Save jokes</button>
 					<button onClick={this.selectRandomfavourite}>Choose 10 random jokes</button>
 				</div>
