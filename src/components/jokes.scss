@@ -5,9 +5,19 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	margin-top: 2rem;
+}
 
+.header {
+	h1 {
+		text-align: center;
+	}
+}
+.footer {
+	h3 {
+		text-align: center;
+	}
 	& button {
-		width: 10rem;
+		min-width: max-content;
 		height: 3rem;
 		font-size: 1rem;
 		font-weight: bold;
