@@ -68,6 +68,10 @@ export class Jokes extends React.Component {
 	render() {
 		return (
 			<div className='container'>
+				<h1>Click your favourite Chuck Norris Joke</h1>
+				<button onClick={this.onGetJokes}>More Jokes!</button>
+				<button onClick={this.onSave}>Save</button>
+				<button onClick={this.selectRandomFavorite}>Choose random</button>
 				{this.state.jokes.map(joke => (
 					<Joke
 						id={joke.id}
@@ -76,10 +80,6 @@ export class Jokes extends React.Component {
 						favorite={this.state.favoriteJokes.includes(joke.id)}
 						onClick={this.onToggleFavorite}></Joke>
 				))}
-				<h1>Click your favourite Chuck Norris Joke</h1>
-				<button onClick={this.onGetJokes}>More Jokes!</button>
-				<button onClick={this.onSave}>Save</button>
-				<button onClick={this.selectRandomFavorite}>Choose random</button>
 			</div>
 		);
 	}
