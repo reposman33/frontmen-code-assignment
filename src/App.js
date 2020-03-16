@@ -1,12 +1,12 @@
 import React from "react";
-import { Jokes } from "../src/components/jokes";
+import { Jokes } from "./components/jokes";
 
 function App() {
 	return (
 		<div className='App'>
-			<Jokes></Jokes>
+			<Jokes />
 		</div>
 	);
 }
 
-export default App;
+export { App };
