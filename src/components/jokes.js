@@ -1,6 +1,7 @@
 import React from "react";
 import { API } from "../services/API";
 import { Joke } from "./joke";
+import { Modal } from "./modal";
 import "./jokes.scss";
 
 export class Jokes extends React.Component {
@@ -14,7 +15,8 @@ export class Jokes extends React.Component {
 		this.initialState = {
 			jokes: savedJokes ? JSON.parse(savedJokes) : [],
 			favouriteJokes: savedfavouriteJokes ? JSON.parse(savedfavouriteJokes) : [],
-			feedback: ""
+			feedback: "",
+			showModal: false
 		};
 		this.state = this.initialState;
 
@@ -89,11 +91,18 @@ export class Jokes extends React.Component {
 		this.setState({ jokes: jokes.map(joke => ({ id: joke.id, joke: joke.joke })), favouriteJokes: [] });
 	};
 
+	setModalState = state => {
+		this.setState({ showModal: state });
+	};
+
 	render() {
 		return (
 			<React.Fragment>
 				<div className='header'>
 					<h1>Click to select your favourite Chuck Norris joke</h1>
+					<span className='button' onClick={() => this.setState({ showModal: true })}>
+						&times;
+					</span>
 				</div>
 				<div className='container'>
 					{this.state.jokes.map(joke => (
@@ -111,6 +120,8 @@ export class Jokes extends React.Component {
 					<button onClick={this.onSave}>Save jokes</button>
 					<button onClick={this.selectRandomfavourite}>Choose 10 random jokes</button>
 				</div>
+
+				<Modal showModal={this.state.showModal} setModalState={this.setModalState} />
 			</React.Fragment>
 		);
 	}

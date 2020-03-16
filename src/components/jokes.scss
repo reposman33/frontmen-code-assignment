@@ -8,8 +8,15 @@
 }
 
 .header {
+	display: flex;
+	flex-direction: column-reverse;
 	h1 {
 		text-align: center;
+	}
+	.button {
+		align-self: flex-end;
+		cursor: pointer;
+		margin-right: 4rem;
 	}
 }
 .footer {
