@@ -101,7 +101,7 @@ export class Jokes extends React.Component {
 				<div className='header'>
 					<h1>Click to select your favourite Chuck Norris joke</h1>
 					<span className='button' onClick={() => this.setState({ showModal: true })}>
-						&times;
+						&#x2754;
 					</span>
 				</div>
 				<div className='container'>
