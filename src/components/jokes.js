@@ -91,6 +91,7 @@ export class Jokes extends React.Component {
 		this.setState({ jokes: jokes.map(joke => ({ id: joke.id, joke: joke.joke })), favouriteJokes: [] });
 	};
 
+	// callback for modal component
 	setModalState = state => {
 		this.setState({ showModal: state });
 	};
@@ -100,7 +101,11 @@ export class Jokes extends React.Component {
 			<React.Fragment>
 				<div className='header'>
 					<h1>Click to select your favourite Chuck Norris joke</h1>
-					<span className='button' onClick={() => this.setState({ showModal: true })}>
+					<span
+						className='button'
+						onClick={() => this.setState({ showModal: true })}
+						role='img'
+						aria-label='about'>
 						&#x2754;
 					</span>
 				</div>

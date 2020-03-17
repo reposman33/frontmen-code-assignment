@@ -10,9 +10,29 @@
 	margin: 1%;
 	padding: 1%;
 
+	&:hover {
+		animation: anime 0.5s alternate;
+		animation-iteration-count: 2;
+	}
+
 	&.selected {
 		background-color: #f0ffff;
 		color: darkblue;
 		border: 1px inset solid red;
+
+		&:hover {
+			animation: anime 0.5s alternate-reverse;
+			animation-iteration-count: 2;
+		}
+	}
+}
+
+@keyframes anime {
+	0% {
+		background-color: #2f4f4f;
+	}
+
+	100% {
+		background-color: #f0ffff;
 	}
 }
