@@ -11,7 +11,7 @@
 	padding: 1%;
 
 	&:hover {
-		animation: anime 0.5s alternate;
+		animation: bgroundColor 0.5s alternate;
 		animation-iteration-count: 2;
 	}
 
@@ -21,13 +21,13 @@
 		border: 1px inset solid red;
 
 		&:hover {
-			animation: anime 0.5s alternate-reverse;
+			animation: bgroundColor 0.5s alternate-reverse;
 			animation-iteration-count: 2;
 		}
 	}
 }
 
-@keyframes anime {
+@keyframes bgroundColor {
 	0% {
 		background-color: #2f4f4f;
 	}
